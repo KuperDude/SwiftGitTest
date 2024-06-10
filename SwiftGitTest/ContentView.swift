@@ -15,13 +15,15 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
             
-            Button("Click me!") {
+            Group {
                 
-            }
-            .background(.green)
-            
-            Button("Click me2!") {
+                Button("Click me!") {
+                    
+                }
                 
+                Button("Click me2!") {
+                    
+                }
             }
             .background(.green)
         }
