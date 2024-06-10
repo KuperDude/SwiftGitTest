@@ -20,12 +20,15 @@ struct ContentView: View {
                 Button("Click me!") {
                     
                 }
+                .padding()
                 
                 Button("Click me2!") {
                     
                 }
+                .padding()
             }
             .background(.green)
+            .foregroundStyle(.white)
         }
         .padding()
     }
