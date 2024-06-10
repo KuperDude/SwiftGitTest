@@ -18,10 +18,12 @@ struct ContentView: View {
             Button("Click me!") {
                 
             }
+            .background(.red)
             
             Button("Click me2!") {
                 
             }
+            .background(.green)
         }
         .padding()
     }
