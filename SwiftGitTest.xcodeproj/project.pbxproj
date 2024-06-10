@@ -11,6 +11,7 @@
 		F871E77D2C17519A00F69C8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871E77C2C17519A00F69C8A /* ContentView.swift */; };
 		F871E77F2C17519C00F69C8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F871E77E2C17519C00F69C8A /* Assets.xcassets */; };
 		F871E7822C17519C00F69C8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F871E7812C17519C00F69C8A /* Preview Assets.xcassets */; };
+		F871E7892C17A6C100F69C8A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871E7882C17A6C100F69C8A /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		F871E77C2C17519A00F69C8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F871E77E2C17519C00F69C8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F871E7812C17519C00F69C8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F871E7882C17A6C100F69C8A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				F871E77A2C17519A00F69C8A /* SwiftGitTestApp.swift */,
 				F871E77C2C17519A00F69C8A /* ContentView.swift */,
+				F871E7882C17A6C100F69C8A /* HomeView.swift */,
 				F871E77E2C17519C00F69C8A /* Assets.xcassets */,
 				F871E7802C17519C00F69C8A /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F871E7892C17A6C100F69C8A /* HomeView.swift in Sources */,
 				F871E77D2C17519A00F69C8A /* ContentView.swift in Sources */,
 				F871E77B2C17519A00F69C8A /* SwiftGitTestApp.swift in Sources */,
 			);
