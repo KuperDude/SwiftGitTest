@@ -9,11 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text("LOL")
-            .padding()
-            .background(.orange)
-            .cornerRadius(13)
-            .shadow(radius: 10)
+        VStack {
+            Text("LOL")
+                .padding()
+                .background(.orange)
+                .cornerRadius(13)
+                .shadow(radius: 10)
+        }
     }
 }
 
