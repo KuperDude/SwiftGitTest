@@ -19,12 +19,12 @@ struct ContentView: View {
             Group {
                 
                 Button("Click me!") {
-                    
+                    //
                 }
                 .padding()
                 
                 Button("Click me2!") {
-                    
+                    //
                 }
                 .padding()
             }
