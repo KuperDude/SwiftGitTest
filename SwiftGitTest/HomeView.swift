@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         VStack {
-            Text("LOL")
+            Text("LOL!!!")
                 .padding()
                 .background(.orange)
                 .cornerRadius(13)
