@@ -13,8 +13,7 @@ struct SettingsView: View {
             Color.purple
                 .ignoresSafeArea()
             
-            VStack {
-                
+            LazyHGrid(rows: [GridItem(.fixed(120)), GridItem(.fixed(120))], spacing: 0, content: {
                 Text("Change language")
                     .padding()
                     .background(.green)
@@ -22,13 +21,13 @@ struct SettingsView: View {
                     .cornerRadius(10)
                 
                 Text("Change age")
+                    .frame(maxWidth: .infinity)
                     .padding()
                     .background(.green)
                     .foregroundStyle(.white)
                     .cornerRadius(10)
-            }
+            })
         }
-        
     }
 }
 
