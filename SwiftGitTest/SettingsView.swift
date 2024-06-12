@@ -12,7 +12,7 @@ struct SettingsView: View {
         ZStack {
             Color.purple
                 .ignoresSafeArea()
-            
+          
             LazyHGrid(rows: [GridItem(.fixed(120)), GridItem(.fixed(120))], spacing: 0, content: {
                 Text("Change language")
                     .padding()
