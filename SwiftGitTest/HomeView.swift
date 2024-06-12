@@ -9,18 +9,23 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack(spacing: 20) {
-            Text("LOL!!!")
-                .padding()
-                .background(.orange)
-                .cornerRadius(9)
-                .shadow(radius: 10)
+        ZStack {
+            Color.blue
+                .ignoresSafeArea()
             
-            Text("LOL!!!")
-                .padding()
-                .background(.orange)
-                .cornerRadius(9)
-                .shadow(radius: 10)
+            VStack(spacing: 20) {
+                Text("LOL!!!")
+                    .padding()
+                    .background(.orange)
+                    .cornerRadius(9)
+                    .shadow(radius: 10)
+                
+                Text("LOL!!!")
+                    .padding()
+                    .background(.orange)
+                    .cornerRadius(9)
+                    .shadow(radius: 10)
+            }
         }
     }
 }
