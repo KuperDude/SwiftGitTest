@@ -20,6 +20,12 @@ struct SettingsView: View {
                     .background(.green)
                     .foregroundStyle(.white)
                     .cornerRadius(10)
+                
+                Text("Change age")
+                    .padding()
+                    .background(.green)
+                    .foregroundStyle(.white)
+                    .cornerRadius(10)
             }
         }
         
