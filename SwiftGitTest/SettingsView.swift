@@ -9,7 +9,20 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.yellow
+                .ignoresSafeArea()
+            
+            VStack {
+                
+                Text("Some settings")
+                    .padding()
+                    .background(.green)
+                    .foregroundStyle(.white)
+                    .cornerRadius(10)
+            }
+        }
+        
     }
 }
 
