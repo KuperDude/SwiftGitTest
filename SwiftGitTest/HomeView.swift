@@ -13,13 +13,13 @@ struct HomeView: View {
             Text("LOL!!!")
                 .padding()
                 .background(.orange)
-                .cornerRadius(13)
+                .cornerRadius(9)
                 .shadow(radius: 10)
             
             Text("LOL!!!")
                 .padding()
                 .background(.orange)
-                .cornerRadius(13)
+                .cornerRadius(9)
                 .shadow(radius: 10)
         }
     }
