@@ -10,12 +10,12 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         ZStack {
-            Color.yellow
+            Color.purple
                 .ignoresSafeArea()
             
             VStack {
                 
-                Text("Some settings")
+                Text("Change language")
                     .padding()
                     .background(.green)
                     .foregroundStyle(.white)
