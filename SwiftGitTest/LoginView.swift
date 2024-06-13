@@ -9,10 +9,12 @@ import SwiftUI
 
 struct LoginView: View {
     var body: some View {
-        Text("Login here!")
-        
-        Button("Login") {
-            //
+        VStack {
+            Text("Login here!")
+            
+            Button("Login") {
+                //
+            }
         }
     }
 }
