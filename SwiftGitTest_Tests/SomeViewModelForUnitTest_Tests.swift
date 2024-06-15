@@ -29,5 +29,40 @@ final class SomeViewModelForUnitTest_Tests: XCTestCase {
         //Then
         XCTAssertTrue(vm.isPremium)
     }
+    
+    func test_SomeViewModelForUnitTest_isPremium_shouldBeFalse() {
+        //Given
+        let isPremium = false
+        
+        //When
+        let vm = SomeViewModelForUnitTest(isPremium: isPremium)
+        
+        //Then
+        XCTAssertFalse(vm.isPremium)
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_shouldBeEqual() {
+        //Given
+        let isPremium = Bool.random()
+        
+        //When
+        let vm = SomeViewModelForUnitTest(isPremium: isPremium)
+        
+        //Then
+        XCTAssertEqual(isPremium, vm.isPremium)
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_shouldBeEqual_stress() {
+        for _ in 0..<100 {
+            //Given
+            let isPremium = Bool.random()
+            
+            //When
+            let vm = SomeViewModelForUnitTest(isPremium: isPremium)
+            
+            //Then
+            XCTAssertEqual(isPremium, vm.isPremium)
+        }
+    }
 
 }
