@@ -64,5 +64,87 @@ final class SomeViewModelForUnitTest_Tests: XCTestCase {
             XCTAssertEqual(isPremium, vm.isPremium)
         }
     }
+    
+    func test_SomeViewModelForUnitTest_isPremium_arrayData_onStartShouldBeEmpty() {
+        //Given
+        
+        //When
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        
+        //Then
+        XCTAssertEqual(vm.arrayData.count, 0)
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_addElement_CountShouldbeEqualArrayCount() {
+        //Given
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        
+        //When
+        vm.addElement(UUID().uuidString)
+        
+        //Then
+        XCTAssertEqual(vm.arrayData.count, 1)
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_addElement_OnAddEmptyArrayShouldBeEmpty() {
+        //Given
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        
+        //When
+        vm.addElement("")
+        
+        //Then
+        XCTAssertEqual(vm.arrayData.count, 0)
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_addElement_CountShouldbeEqualArrayCount_stress() {
+        //Given
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        let loopCount = 100
+        //When
+        for _ in 0..<loopCount {
+            vm.addElement(UUID().uuidString)
+        }
+        
+        //Then
+        XCTAssertEqual(vm.arrayData.count, loopCount)
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_selectElement_ShouldBeNilOnStart() {
+        //Given
+        
+        //When
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        
+        //Then
+        XCTAssertNil(vm.selected)
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_selectElement_ShouldBeEqualElement() {
+        //Given
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        
+        let item = UUID().uuidString
+        //When
+        vm.addElement(item)
+        vm.selectElement(item)
+        
+        //Then
+        XCTAssertEqual(vm.selected, item)
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_selectElement_ShouldBeEqualNil() {
+        //Given
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        let item = UUID().uuidString
+        
+        //When
+        vm.addElement(item)
+        vm.selectElement(item)
+        vm.selectElement("")
+        
+        //Then
+        XCTAssertNil(vm.selected)
+    }
 
 }
