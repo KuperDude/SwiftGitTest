@@ -16,6 +16,11 @@ class SomeViewModelForUnitTest: ObservableObject {
         self.isPremium = isPremium
     }
     
+    enum CustomError: Error {
+        case doesntExist
+        case noData
+    }
+    
 }
 
 //MARK: - UserIntent(s)
@@ -33,5 +38,18 @@ extension SomeViewModelForUnitTest {
         } else {
             selected = nil
         }
+    }
+    
+    func saveElement(_ item: String) throws {
+        
+        if item == "" {
+            throw CustomError.noData
+        }
+        
+        guard let element = arrayData.first(where: { $0 == item }) else {
+            throw CustomError.doesntExist
+        }
+        
+        //code for save
     }
 }

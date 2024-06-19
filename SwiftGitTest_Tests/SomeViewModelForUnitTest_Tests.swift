@@ -10,13 +10,17 @@ import XCTest
 @testable import SwiftGitTest
 
 final class SomeViewModelForUnitTest_Tests: XCTestCase {
+    
+    var viewModel: SomeViewModelForUnitTest?
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        viewModel = SomeViewModelForUnitTest(isPremium: Bool.random())
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        viewModel = nil
     }
 
     func test_SomeViewModelForUnitTest_isPremium_shouldBeTrue() {
@@ -69,7 +73,10 @@ final class SomeViewModelForUnitTest_Tests: XCTestCase {
         //Given
         
         //When
-        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        guard let vm = viewModel else {
+            XCTFail()
+            return
+        }
         
         //Then
         XCTAssertEqual(vm.arrayData.count, 0)
@@ -77,7 +84,10 @@ final class SomeViewModelForUnitTest_Tests: XCTestCase {
     
     func test_SomeViewModelForUnitTest_isPremium_addElement_CountShouldbeEqualArrayCount() {
         //Given
-        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        guard let vm = viewModel else {
+            XCTFail()
+            return
+        }
         
         //When
         vm.addElement(UUID().uuidString)
@@ -88,7 +98,10 @@ final class SomeViewModelForUnitTest_Tests: XCTestCase {
     
     func test_SomeViewModelForUnitTest_isPremium_addElement_OnAddEmptyArrayShouldBeEmpty() {
         //Given
-        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        guard let vm = viewModel else {
+            XCTFail()
+            return
+        }
         
         //When
         vm.addElement("")
@@ -145,6 +158,56 @@ final class SomeViewModelForUnitTest_Tests: XCTestCase {
         
         //Then
         XCTAssertNil(vm.selected)
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_saveElement_ShouldFail_doesntExist() {
+        //Given
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        let item = UUID().uuidString
+        
+        //When
+        XCTAssertThrowsError(try vm.saveElement(item))
+        
+        //Then
+        XCTAssertThrowsError(try vm.saveElement(item), "Should doesntexist") { error in
+            XCTAssertEqual(error as? SomeViewModelForUnitTest.CustomError, .doesntExist)
+        }
+        
+        do {
+            try vm.saveElement(item)
+        } catch let error {
+            XCTAssertEqual(error as? SomeViewModelForUnitTest.CustomError, .doesntExist)
+        }
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_saveElement_ShouldFail_noData() {
+        //Given
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        let item = ""
+        
+        //When
+        vm.addElement(item)
+        XCTAssertThrowsError(try vm.saveElement(item))
+        
+        //Then
+        do {
+            try vm.saveElement(item)
+        } catch let error {
+            XCTAssertEqual(error as? SomeViewModelForUnitTest.CustomError, .noData)
+        }
+    }
+    
+    func test_SomeViewModelForUnitTest_isPremium_saveElement_ShouldSaveData() {
+        //Given
+        let vm = SomeViewModelForUnitTest(isPremium: Bool.random())
+        let item = UUID().uuidString
+        
+        //When
+        vm.addElement(item)
+        XCTAssertNoThrow(try vm.saveElement(item))
+        
+        //Then
+        XCTAssertEqual(vm.arrayData.count, 1)
     }
 
 }
