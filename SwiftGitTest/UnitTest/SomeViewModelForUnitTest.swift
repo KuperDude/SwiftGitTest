@@ -6,14 +6,20 @@
 //
 
 import Foundation
+import Combine
 
 class SomeViewModelForUnitTest: ObservableObject {
     @Published var isPremium: Bool
     @Published var selected: String? = nil
     @Published var arrayData: [String] = []
     
+    var cancellables = Set<AnyCancellable>()
+    
+    var manager: MockDataManager
+    
     init(isPremium: Bool) {
         self.isPremium = isPremium
+        manager = MockDataManager(dataArray: nil)
     }
     
     enum CustomError: Error {
@@ -51,5 +57,32 @@ extension SomeViewModelForUnitTest {
         }
         
         //code for save
+    }
+    
+    func getDataWithEscaping() {
+        manager.dataFromEscaping { [weak self] array in
+            self?.arrayData = array
+        }
+    }
+    
+    func getDataWithCompine() {
+        manager.dataFromCombine()
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                //
+            } receiveValue: { [weak self] array in
+                self?.arrayData = array
+            }
+            .store(in: &cancellables)
+
+    }
+    
+    func getDataWithAsync() {
+        Task {
+            let result = await manager.dataFromConcurrency()
+            await MainActor.run {
+                self.arrayData = result
+            }
+        }
     }
 }
