@@ -26,6 +26,7 @@
 		F871E7B32C28A6D400F69C8A /* SwiftGitTest_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871E7B22C28A6D400F69C8A /* SwiftGitTest_UITests.swift */; };
 		F871E7B52C28A6D400F69C8A /* SwiftGitTest_UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871E7B42C28A6D400F69C8A /* SwiftGitTest_UITestsLaunchTests.swift */; };
 		F871E7BD2C28A72000F69C8A /* UITestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871E7BC2C28A72000F69C8A /* UITestingView.swift */; };
+		F871E7C22C28B0A200F69C8A /* UITestingView_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871E7C12C28B0A200F69C8A /* UITestingView_UITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		F871E7B22C28A6D400F69C8A /* SwiftGitTest_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGitTest_UITests.swift; sourceTree = "<group>"; };
 		F871E7B42C28A6D400F69C8A /* SwiftGitTest_UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGitTest_UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F871E7BC2C28A72000F69C8A /* UITestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingView.swift; sourceTree = "<group>"; };
+		F871E7C12C28B0A200F69C8A /* UITestingView_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingView_UITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,8 +157,8 @@
 		F871E79E2C1DFE1B00F69C8A /* SwiftGitTest_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F871E7A62C1DFE6B00F69C8A /* SomeViewModelForUnitTest_Tests.swift */,
 				F871E79F2C1DFE1B00F69C8A /* SwiftGitTest_Tests.swift */,
+				F871E7A62C1DFE6B00F69C8A /* SomeViewModelForUnitTest_Tests.swift */,
 				F871E7AA2C2450EA00F69C8A /* MockDataManager_Tests.swift */,
 			);
 			path = SwiftGitTest_Tests;
@@ -167,6 +169,7 @@
 			children = (
 				F871E7B22C28A6D400F69C8A /* SwiftGitTest_UITests.swift */,
 				F871E7B42C28A6D400F69C8A /* SwiftGitTest_UITestsLaunchTests.swift */,
+				F871E7C12C28B0A200F69C8A /* UITestingView_UITests.swift */,
 			);
 			path = SwiftGitTest_UITests;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F871E7B32C28A6D400F69C8A /* SwiftGitTest_UITests.swift in Sources */,
+				F871E7C22C28B0A200F69C8A /* UITestingView_UITests.swift in Sources */,
 				F871E7B52C28A6D400F69C8A /* SwiftGitTest_UITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

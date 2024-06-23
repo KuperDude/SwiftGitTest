@@ -40,6 +40,7 @@ struct UITestingView: View {
                         .foregroundStyle(Color.white)
                         .cornerRadius(10)
                         .padding()
+                        .accessibilityIdentifier("TextFieldForLogin")
                     
                     Button {
                         withAnimation(.spring) {
@@ -54,6 +55,7 @@ struct UITestingView: View {
                     .foregroundStyle(Color.blue)
                     .cornerRadius(10)
                     .padding(.horizontal)
+                    .accessibilityIdentifier("SignUpButton")
                 }
                 .transition(.move(edge: .leading))
             }
@@ -85,7 +87,7 @@ struct UITestigHomeView: View {
                 Button {
                     showAlert = true
                 } label: {
-                    Text("Sign up")
+                    Text("Show Alert")
                         .frame(maxWidth: .infinity)
                 }
                 .padding()
