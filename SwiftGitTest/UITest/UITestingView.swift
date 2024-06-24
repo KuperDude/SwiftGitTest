@@ -98,6 +98,7 @@ struct UITestigHomeView: View {
                 .alert(isPresented: $showAlert, content: {
                     return Alert(title: Text("Hello text!"))
                 })
+                .accessibilityIdentifier("ShowAlert")
                 
                 NavigationLink("Link") {
                     Text("Destanation")
