@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct SwiftGitTestApp: App {
+    
+    let userSignUp: Bool
+    
+    init() {
+        
+        self.userSignUp = ProcessInfo.processInfo.arguments.contains("-UITest_UserSignUp")
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UITestingView(isUserLogin: userSignUp)
         }
     }
 }
