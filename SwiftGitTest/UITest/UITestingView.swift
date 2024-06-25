@@ -11,7 +11,11 @@ import SwiftUI
 class UITestingViewModel: ObservableObject {
     
     @Published var text = ""
-    @Published var isLogin = false
+    @Published var isLogin: Bool
+    
+    init(isLogin: Bool) {
+        self.isLogin = isLogin
+    }
     
     func loginButtonAction() {
         guard !text.isEmpty else { return }
@@ -22,7 +26,11 @@ class UITestingViewModel: ObservableObject {
 
 struct UITestingView: View {
     
-    @StateObject var vm = UITestingViewModel()
+    @StateObject var vm: UITestingViewModel
+    
+    init(isUserLogin: Bool) {
+        self._vm = StateObject(wrappedValue: UITestingViewModel(isLogin: isUserLogin))
+    }
     
     
     var body: some View {
@@ -71,7 +79,7 @@ struct UITestingView: View {
 }
 
 #Preview {
-    UITestingView()
+    UITestingView(isUserLogin: false)
 }
 
 
@@ -100,6 +108,7 @@ struct UITestigHomeView: View {
                 })
                 .accessibilityIdentifier("ShowAlert")
                 
+                
                 NavigationLink("Link") {
                     Text("Destanation")
                 }
@@ -109,6 +118,7 @@ struct UITestigHomeView: View {
                 .foregroundStyle(Color.white)
                 .cornerRadius(10)
                 .padding(.horizontal)
+                .accessibilityIdentifier("Link")
                 
             }
             .navigationTitle("Home View")

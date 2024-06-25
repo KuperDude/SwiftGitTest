@@ -13,7 +13,7 @@ final class UITestingView_UITests: XCTestCase {
 
     override func setUpWithError() throws {
         continueAfterFailure = false
-        
+        //app.launchArguments = ["-UITest_UserSignUp"]
         app.launch()
 
     }
@@ -22,49 +22,24 @@ final class UITestingView_UITests: XCTestCase {
 
     func test_UITestingView_signUpButton_shouldPresentHomeView() {
         //Given
-        let textField = app.textFields["TextFieldForLogin"]
         
         //When
-        textField.tap()
-        
-        let GKey = app.keys["G"]
-        GKey.tap()
-        
-        let gKey = app.keys["g"]
-        gKey.tap()
-        gKey.tap()
-        
-        let returnButton = app.buttons["Return"]
-        returnButton.tap()
-        
-        let loginButton = app.buttons["SignUpButton"]
-        loginButton.tap()
-        
-        let navTitle = app.navigationBars["Home View"].staticTexts["Home View"]
+        signInAndSignUp(onTapingKeyboard: true)
         
         //Then
-        
+        let navTitle = app.navigationBars["Home View"].staticTexts["Home View"]
         XCTAssertTrue(navTitle.exists)
         
     }
     
     func test_UITestingView_signUpButton_shouldNotPresentHomeView() {
         //Given
-        let textField = app.textFields["TextFieldForLogin"]
         
         //When
-        textField.tap()
-        
-        let returnButton = app.buttons["Return"]
-        returnButton.tap()
-        
-        let loginButton = app.buttons["SignUpButton"]
-        loginButton.tap()
-        
-        let navTitle = app.navigationBars["Home View"].staticTexts["Home View"]
+        signInAndSignUp(onTapingKeyboard: false)
         
         //Then
-        
+        let navTitle = app.navigationBars["Home View"].staticTexts["Home View"]
         XCTAssertFalse(navTitle.exists)
         
     }
@@ -72,74 +47,102 @@ final class UITestingView_UITests: XCTestCase {
     func test_UITestingView_helloAlert_shouldPresentsInHomeViewAndDissapear() {
         
         //Given
-        let textField = app.textFields["TextFieldForLogin"]
+        signInAndSignUp(onTapingKeyboard: true)
         
         //When
-        textField.tap()
-        
-        let GKey = app.keys["G"]
-        GKey.tap()
-        
-        let gKey = app.keys["g"]
-        gKey.tap()
-        gKey.tap()
-        
-        let returnButton = app.buttons["Return"]
-        returnButton.tap()
-        
-        let loginButton = app.buttons["SignUpButton"]
-        loginButton.tap()
-        
-        let navTitle = app.navigationBars["Home View"].staticTexts["Home View"]
-        XCTAssertTrue(navTitle.exists)
-        
-        let showAlertButton = app.buttons["ShowAlert"]
-        showAlertButton.tap()
-        
-        let alert = app.alerts.firstMatch
-        XCTAssertTrue(alert.waitForExistence(timeout: 1))
-
-        let alertOKButton = alert.scrollViews.otherElements.buttons["OK"]
-        alertOKButton.tap()
+        showHelloAlert(dissmiss: true)
         
         //Then
-        
-        XCTAssertFalse(alert.waitForExistence(timeout: 1))
+        XCTAssertFalse(app.alerts.firstMatch.waitForExistence(timeout: 1))
         
     }
     
     func test_UITestingView_helloAlert_shouldPresentsInHome() {
         
         //Given
-        let textField = app.textFields["TextFieldForLogin"]
+        signInAndSignUp(onTapingKeyboard: true)
         
         //When
+        showHelloAlert(dissmiss: false)
+        
+        //Then
+        XCTAssertTrue(app.alerts.firstMatch.waitForExistence(timeout: 1))
+
+    }
+    
+    func test_UITestingView_link_shouldPresentsDestanationAndDissmiss() {
+        
+        //Given
+        signInAndSignUp(onTapingKeyboard: true)
+        
+        //When
+        showDestanation(dismiss: true)
+        
+        //Then
+        let navTitle = app.navigationBars["Home View"].staticTexts["Home View"]
+        XCTAssertTrue(navTitle.exists)
+        
+    }
+    
+    func test_UITestingView_link_shouldPresentsDestanation() {
+        
+        //Given
+        signInAndSignUp(onTapingKeyboard: true)
+        
+        //When
+        showDestanation(dismiss: false)
+        
+        //Then
+        let destanation = app.staticTexts["Destanation"]
+        XCTAssertTrue(destanation.exists)
+    }
+}
+
+// MARK: - Sub functions
+
+extension UITestingView_UITests {
+    
+    func signInAndSignUp(onTapingKeyboard: Bool) {
+        let textField = app.textFields["TextFieldForLogin"]
         textField.tap()
         
-        let GKey = app.keys["G"]
-        GKey.tap()
-        
-        let gKey = app.keys["g"]
-        gKey.tap()
-        gKey.tap()
+        if onTapingKeyboard {
+            let GKey = app.keys["G"]
+            GKey.tap()
+            
+            let gKey = app.keys["g"]
+            gKey.tap()
+            gKey.tap()
+        }
         
         let returnButton = app.buttons["Return"]
         returnButton.tap()
         
         let loginButton = app.buttons["SignUpButton"]
         loginButton.tap()
-        
-        let navTitle = app.navigationBars["Home View"].staticTexts["Home View"]
-        XCTAssertTrue(navTitle.exists)
-        
+    }
+    
+    func showHelloAlert(dissmiss: Bool) {
         let showAlertButton = app.buttons["ShowAlert"]
         showAlertButton.tap()
         
         let alert = app.alerts.firstMatch
-        
-        //Then
-        
         XCTAssertTrue(alert.waitForExistence(timeout: 1))
-
+        
+        if dissmiss {
+            let alertOKButton = alert.scrollViews.otherElements.buttons["OK"]
+            alertOKButton.tap()
+        }
+    }
+    
+    func showDestanation(dismiss: Bool) {
+        let linkButton = app.buttons["Link"]
+        XCTAssertTrue(linkButton.waitForExistence(timeout: 1))
+        linkButton.tap()
+        
+        if dismiss {
+            let navBackButton = app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"].buttons["Home View"]
+            navBackButton.tap()
+        }
     }
 }
